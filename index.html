@@ -4,7 +4,7 @@
 <head>
     
   <meta charset="utf-8">
-
+  <link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="./momflix.png">
 
 
@@ -22,11 +22,18 @@
   }
   .item{
     margin:0 auto;
-      border: red 2px solid;
+      border: white 3px solid;
       width:100%;
+      margin-top:12%;
   }
   video {
       width: 100%;
+  }
+  h3{
+        font-family: 'ZCOOL XiaoWei', serif;
+      color:white;
+      text-align: center;
+    font-size: 38px
   }
   </style>
 </head>
@@ -120,11 +127,16 @@
        ]
 
        vids.forEach(d => {
-           const title = d.split('.')[0].split('_').join(' ');
+           const title = d.split('.')[0].split('_').join(' ').toLocaleUpperCase();;
            const videoEl = document.createElement('video');
            videoEl.controls = true;
            const itemDiv = document.createElement('div');
            itemDiv.className = 'item';
+
+           const h3 = document.createElement('h3');
+           h3.innerHTML = title;
+           itemDiv.appendChild(h3);
+
            videoEl.src = bucketURL + d;
            itemDiv.appendChild(videoEl);
            container.appendChild(itemDiv);
